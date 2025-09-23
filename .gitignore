@@ -1,7 +1,25 @@
-# Ignore Terraform local state and providers
+# Ignore Terraform local state, crash logs, backups, and provider binaries
 .terraform/
 *.tfstate
 *.tfstate.*
 .crash
 *.backup
 .terraform.lock.hcl
+
+# Ignore sensitive override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Ignore CLI configuration files
+.terraformrc
+terraform.rc
+
+# Ignore Terraform plan outputs
+*.tfplan
+
+# Optional: ignore local IDE/editor files
+.vscode/
+.idea/
+.DS_Store

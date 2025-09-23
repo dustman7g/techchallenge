@@ -7,7 +7,6 @@ resource "aws_subnet" "management" {
 }
 
 resource "aws_subnet" "app" {
-  count                   = var.app_subnet_cidrs
   vpc_id                  = aws_vpc.main.id
   cidr_block              = var.app_subnet_cidrs
   availability_zone       = var.azs[0]
@@ -16,7 +15,6 @@ resource "aws_subnet" "app" {
 }
 
 resource "aws_subnet" "backend" {
-  count                   = var.backend_subnet_cidrs
   vpc_id                  = aws_vpc.main.id
   cidr_block              = var.backend_subnet_cidrs
   availability_zone       = var.azs[1]

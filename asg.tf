@@ -20,7 +20,7 @@ resource "aws_autoscaling_group" "app_asg" {
   desired_capacity          = var.asg_desired
   min_size                  = var.asg_min
   max_size                  = var.asg_max
-  vpc_zone_identifier       = [for s in aws_subnet.app : s.id]
+  vpc_zone_identifier       = [aws_subnet.app.id]
   health_check_type         = "EC2"
   health_check_grace_period = 120
 

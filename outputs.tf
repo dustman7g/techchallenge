@@ -10,12 +10,12 @@ output "management_subnet_id" {
 
 output "app_subnet_ids" {
   description = "Application subnet ids (private)"
-  value       = [for s in aws_subnet.app : s.id]
+  value       = aws_subnet.app.id
 }
 
 output "backend_subnet_ids" {
   description = "Backend subnet ids (private)"
-  value       = [for s in aws_subnet.backend : s.id]
+  value       = aws_subnet.backend.id
 }
 
 output "alb_dns_name" {
