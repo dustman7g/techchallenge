@@ -58,20 +58,20 @@ resource "aws_security_group" "app_sg" {
 
   # HTTP from ALB SG
   ingress {
-    description      = "HTTP from ALB"
-    from_port        = 80
-    to_port          = 80
-    protocol         = "tcp"
-    security_groups  = [aws_security_group.alb_sg.id]
+    description     = "HTTP from ALB"
+    from_port       = 80
+    to_port         = 80
+    protocol        = "tcp"
+    security_groups = [aws_security_group.alb_sg.id]
   }
 
   # SSH from management SG
   ingress {
-    description      = "SSH from management instance"
-    from_port        = 22
-    to_port          = 22
-    protocol         = "tcp"
-    security_groups  = [aws_security_group.mgmt_sg.id]
+    description     = "SSH from management instance"
+    from_port       = 22
+    to_port         = 22
+    protocol        = "tcp"
+    security_groups = [aws_security_group.mgmt_sg.id]
   }
 
   egress {

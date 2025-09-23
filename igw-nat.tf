@@ -1,7 +1,7 @@
 # Internet Gateway for Management subnet
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.main.id
-  tags = { Name = "vpc-igw" }
+  tags   = { Name = "vpc-igw" }
 }
 
 # NAT Gateway for private subnets
@@ -13,6 +13,6 @@ resource "aws_eip" "nat" {
 resource "aws_nat_gateway" "nat" {
   allocation_id = aws_eip.nat.id
   subnet_id     = aws_subnet.management.id
-  tags = { Name = "nat-gateway" }
-  depends_on = [aws_internet_gateway.igw]
+  tags          = { Name = "nat-gateway" }
+  depends_on    = [aws_internet_gateway.igw]
 }

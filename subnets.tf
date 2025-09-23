@@ -3,7 +3,7 @@ resource "aws_subnet" "management" {
   cidr_block              = var.management_subnet_cidr
   availability_zone       = var.azs[0]
   map_public_ip_on_launch = true
-  tags = { Name = "management-subnet" }
+  tags                    = { Name = "management-subnet" }
 }
 
 resource "aws_subnet" "app" {
@@ -12,7 +12,7 @@ resource "aws_subnet" "app" {
   cidr_block              = var.app_subnet_cidrs
   availability_zone       = var.azs[0]
   map_public_ip_on_launch = false
-  tags = { Name = "app-subnet" }
+  tags                    = { Name = "app-subnet" }
 }
 
 resource "aws_subnet" "backend" {
@@ -21,5 +21,5 @@ resource "aws_subnet" "backend" {
   cidr_block              = var.backend_subnet_cidrs
   availability_zone       = var.azs[1]
   map_public_ip_on_launch = false
-  tags = { Name = "backend-subnet" }
+  tags                    = { Name = "backend-subnet" }
 }
