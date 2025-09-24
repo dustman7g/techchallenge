@@ -2,7 +2,9 @@ resource "aws_lb" "app_alb" {
   name               = "app-alb"
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb_sg.id]
-  subnets            = [aws_subnet.app.id] # place ALB in app subnets for private->public access
+
+  # Use both subnets across AZs
+  subnets            = [for s in aws_subnet.app : s.id]
 
   tags = { Name = "app-alb" }
 }

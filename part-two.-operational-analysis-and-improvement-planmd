@@ -35,12 +35,14 @@
 - Enable VPC Flow Logs and ALB access logs.
 
 ### Priority 2 – Availability
+- Create 3 more subnets and split each segment(Management,Application, and Backend) into another AZ so there is multi AZ redundancy for each segment.
 - Deploy a second management node in another AZ or replace with SSM.
 - Add CloudWatch alarms for EC2 health and ASG scaling events.
 
 ### Priority 3 – Cost
 - Shut down management instance when not needed or replace with on-demand SSM sessions.
 - Consider spot instances for ASG if workload is fault-tolerant.
+- For testing t3.micro is on free tier and t2.micro is not.
 
 ### Priority 4 – Maintainability
 - Add Terraform modules for monitoring/backup automation.
