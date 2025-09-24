@@ -62,8 +62,12 @@
 
 ### Deploying the Environment
 ```bash
-git clone <repo_url>
-cd <repo_dir>
+git clone https://github.com/dustman7g/techchallenge.git
+cd https://github.com/dustman7g/techchallenge.git
 terraform init
+terraform plan
 terraform apply
+
+### Deploying the Environment
+terraform destroy
 
