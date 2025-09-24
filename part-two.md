@@ -7,8 +7,10 @@
 - No encryption settings enforced on EBS volumes.
 - Security groups allow SSH; no session logging or intrusion detection.
 - No centralized logging of ALB or EC2 activity.
+- One significant IAM security gap is the use of overly permissive roles that allow unnecessary actions beyond SSH and web serving.
 
 ### Availability Issues
+- Only 3 subnets does not allow you to spread each segment across multiple AZs. Having two subnets per Management, Application, and Backend would be ideal.
 - Only one management instance (single point of failure).
 - Auto Scaling Group (ASG) is spread across AZs, but backend subnet unused for HA.
 - No health checks or alarms beyond ALB defaults.
@@ -22,7 +24,6 @@
 - No automated backups (EBS snapshots, AMIs, or database backups).
 - No CloudWatch alarms/metrics dashboards for visibility.
 - No patching/AMIs baked with configuration.
-- No runbooks for failure recovery.
 
 ---
 
@@ -63,11 +64,11 @@
 ### Deploying the Environment
 ```bash
 git clone https://github.com/dustman7g/techchallenge.git
-cd https://github.com/dustman7g/techchallenge.git
 terraform init
 terraform plan
 terraform apply
-
-### Deploying the Environment
+```
+### Decommissioning the Environment
+```bash
 terraform destroy
 
