@@ -16,16 +16,15 @@ variable "azs" {
   default     = ["us-east-1a", "us-east-1b"]
 }
 
-variable "management_subnet_cidr" {
-  description = "Management subnet CIDR (public) - /24"
-  type        = string
-  default     = "10.1.1.0/24"
+variable "management_subnet_cidrs" {
+  type    = list(string)
+  default = ["10.1.1.0/24", "10.1.2.0/24"]
 }
 
 variable "app_subnet_cidrs" {
   description = "Application subnet CIDRs (private) - provide two to spread across two AZs"
-  type        = string
-  default     = "10.1.10.0/24"
+  type    = list(string)
+  default     = ["10.1.10.0/24","10.1.11.0/24"]
 }
 
 variable "backend_subnet_cidrs" {
