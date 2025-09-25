@@ -31,7 +31,7 @@ variable "app_subnet_cidrs" {
 variable "backend_subnet_cidrs" {
   description = "Backend subnet CIDRs (private) - provide two to spread across two AZs"
   type        = string
-  default     = "10.1.3.0/24"
+  default     = "10.1.4.0/24"
 }
 
 variable "allowed_mgmt_ip" {
@@ -43,7 +43,7 @@ variable "allowed_mgmt_ip" {
 variable "key_name" {
   description = "EC2 Key pair name for SSH access"
   type        = string
-  default     = "my-keypair" # NEED TO REPLACE
+  default     = "dustin-key" 
 }
 
 variable "asg_min" {

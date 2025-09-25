@@ -2,9 +2,9 @@ resource "aws_launch_template" "app_lt" {
   name_prefix   = "app-lt-"
   image_id      = data.aws_ami.amazon_linux_2.id
   #instance_type = "t2.micro"
-  instance_type = "t3.micro" ########### t3.micro is on free tier 
+  instance_type = "t3.micro" ########### t3.micro is on free
   vpc_security_group_ids = [aws_security_group.app_sg.id]
-
+  key_name = aws_key_pair.management.key_name
   user_data = base64encode(file("${path.module}/userdata.sh"))
 
   tag_specifications {
@@ -20,7 +20,7 @@ resource "aws_autoscaling_group" "app_asg" {
   desired_capacity          = var.asg_desired
   min_size                  = var.asg_min
   max_size                  = var.asg_max
-  vpc_zone_identifier       = [aws_subnet.app.id]
+  vpc_zone_identifier       = [for s in aws_subnet.app : s.id]
   health_check_type         = "EC2"
   health_check_grace_period = 120
 

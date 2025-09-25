@@ -10,7 +10,7 @@ output "management_subnet_id" {
 
 output "app_subnet_ids" {
   description = "Application subnet ids (private)"
-  value       = aws_subnet.app.id
+  value       = [for s in aws_subnet.app : s.id]
 }
 
 output "backend_subnet_ids" {
