@@ -5,7 +5,7 @@ output "vpc_id" {
 
 output "management_subnet_id" {
   description = "Management subnet id (public)"
-  value       = aws_subnet.management.id
+  value       = [for s in aws_subnet.management : s.id]
 }
 
 output "app_subnet_ids" {

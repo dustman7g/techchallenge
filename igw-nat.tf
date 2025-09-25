@@ -12,7 +12,7 @@ resource "aws_eip" "nat" {
 
 resource "aws_nat_gateway" "nat" {
   allocation_id = aws_eip.nat.id
-  subnet_id     = aws_subnet.management.id
+  subnet_id     = aws_subnet.management[0].id
   tags          = { Name = "nat-gateway" }
   depends_on    = [aws_internet_gateway.igw]
 }

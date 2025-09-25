@@ -11,10 +11,27 @@ resource "aws_route_table" "public" {
 }
 
 resource "aws_route_table_association" "mgmt_assoc" {
-  subnet_id      = aws_subnet.management.id
+  for_each = { for idx, subnet in aws_subnet.management : idx => subnet }
+
+  subnet_id      = each.value.id
   route_table_id = aws_route_table.public.id
+
 }
 
+resource "aws_route_table" "private" {
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name = "private-rt"
+  }
+}
+
+resource "aws_route_table_association" "private" {
+  for_each = { for idx, subnet in aws_subnet.app : idx => subnet }
+
+  subnet_id      = each.value.id
+  route_table_id = aws_route_table.private.id
+}
 # Private route table for app & backend using NAT
 # resource "aws_route_table" "private" {
 #   vpc_id = aws_vpc.main.id

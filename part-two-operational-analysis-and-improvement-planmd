@@ -64,6 +64,23 @@
 ## Runbook Notes
 
 ### Deploying the Environment
+Windows users
+Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
+Note: Service might not be running and in a disabled state - enable openSSH service and start it
+Set-Service "ssh-agent" -StartupType Automatic
+Start-Service "ssh-agent"
+
+To run terraform plan apply need to add 
+$env:AWS_ACCESS_KEY_ID = "your access key id"
+$env:AWS_SECRET_ACCESS_KEY = "your access key”
+$env:AWS_DEFAULT_REGION = "us-east-1"
+
+need to add public IP of your computer to SG so it will allow you to ssh
+
+####### Find my public IP
+(Invoke-WebRequest -Uri "https://ifconfig.me/ip").Content.Trim()
+
+
 ```bash
 git clone https://github.com/dustman7g/techchallenge.git
 terraform init

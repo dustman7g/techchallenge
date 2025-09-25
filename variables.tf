@@ -25,13 +25,13 @@ variable "management_subnet_cidr" {
 variable "app_subnet_cidrs" {
   description = "Application subnet CIDRs (private) - provide two to spread across two AZs"
   type        = string
-  default     = "10.1.2.0/24"
+  default     = "10.1.10.0/24"
 }
 
 variable "backend_subnet_cidrs" {
-  description = "Backend subnet CIDRs (private) - provide two to spread across two AZs"
+  description = "Backend subnet CIDRs (private)"
   type        = string
-  default     = "10.1.4.0/24"
+  default     = "10.1.20.0/24"
 }
 
 variable "allowed_mgmt_ip" {
